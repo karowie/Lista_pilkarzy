@@ -1,0 +1,39 @@
+﻿<Window x:Class="Lab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab2"
+        mc:Ignorable="d"
+        Title="Aplikacja - piłkarze" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label x:Name="labelImie" Content="Imie"  />
+            <local:TextBoxWithErrorProvider x:Name="textBoxImie" Margin="10,3" />
+            <Label x:Name="labelNazwisko" Content="Nazwisko"/>
+            <local:TextBoxWithErrorProvider x:Name="textBoxNazwisko" Margin="10,3" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Label x:Name="labelWiek"  Content="Wiek:   "  />
+                <Label x:Name="labelWiekWartosc" Content="{Binding Path=Value,ElementName=sliderWiek}" />
+            </StackPanel>
+            <Slider x:Name="sliderWiek" Margin="10,0" Minimum="15" Maximum="50" Value="25" TickFrequency="1" IsSnapToTickEnabled="True"  />
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label x:Name="labelWaga"  Content="Waga:  "  />
+                <Label x:Name="labelWagaWartosc" Content="{Binding Path=Value,ElementName=sliderWaga}" />
+            </StackPanel>
+            <Slider x:Name="sliderWaga" Margin="10,0" Minimum="50" Maximum="120" Value="75" TickFrequency="1" IsSnapToTickEnabled="True" />
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="20" HorizontalAlignment="Center">
+                <Button x:Name="buttonDodaj"  Content="Dodaj" Width="80" Click="buttonDodaj_Click"  Margin="3"/>
+                <Button x:Name="buttonEdytuj" Content="Edytuj" Width="80" Click="buttonEdytuj_Click" Margin="3" IsEnabled="False"/>
+                <Button x:Name="buttonUsun" Content="Usuń" Width="80" Click="buttonUsun_Click"  Margin="3" IsEnabled="False"/>
+            </StackPanel>
+            <Label x:Name="LabelBledy" Content=""/>
+        </StackPanel>
+        <ListBox x:Name="listBoxLista" Grid.Column="1" Margin="20" SelectionChanged="listBoxLista_SelectionChanged" />
+    </Grid>
+</Window>
